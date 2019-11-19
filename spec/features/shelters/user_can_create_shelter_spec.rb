@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "add shelter page", type: :feature do
   it "can add a shelter" do
-    visit "shelters/new"
 
-  expect(page).to have_field "shelter[name]"
-  expect(page).to have_field "shelter[address]"
-  expect(page).to have_field "shelter[city]"
-  expect(page).to have_field "shelter[state]"
-  expect(page).to have_field "shelter[zip]"
-  expect(page).to have_button "submit"
+    visit "shelters/new"
+    fill_in 'shelter[name]', with: 'test shelter'
+    fill_in 'shelter[address]', with: 'test shelter address'
+    fill_in 'shelter[city]', with: 'test shelter city'
+    fill_in 'shelter[state]', with: 'test shelter state'
+    fill_in 'shelter[zip]', with: 'test shelter zip'
+    click_button 'submit'
+
+    assert_equal '/shelters', page.current_path
   end
 end

@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "add shelter page", type: :feature do
+  it "has link for new shelter on index", type: :feature do
+    visit "/shelters"
+
+    click_link 'New Shelter'
+    assert_equal '/shelters/new', current_path
+  end
+  
   it "can add a shelter" do
 
     visit "shelters/new"
@@ -11,6 +18,6 @@ RSpec.describe "add shelter page", type: :feature do
     fill_in 'shelter[zip]', with: 'test shelter zip'
     click_button 'submit'
 
-    assert_equal '/shelters', page.current_path
+    assert_equal '/shelters', current_path
   end
 end

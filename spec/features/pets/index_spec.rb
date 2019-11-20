@@ -13,19 +13,25 @@ describe "pets index page", type: :feature do
       state:   "FL",
       zip:     "32824")
 
-    @pet_1 = {image:    "string",
-      name:             "Seamus",
-      approximate_age:  8,
-      sex:              "M",
-      shelter_id:       @shelter_1.id}
-    @pet_2 = {image:    "string",
-      name:             "Pepper",
-      approximate_age:  4,
-      sex:              "F",
-      shelter_id:       @shelter_2.id}
+    @pet_1 = Pet.create(image: "string",
+        name:             "Seamus",
+        approximate_age:  8,
+        sex:              "M",
+        shelter_id:       @shelter_1.id)
+    @pet_2 = Pet.create(image: "string",
+        name:             "Pepper",
+        approximate_age:  4,
+        sex:              "F",
+        shelter_id:       @shelter_2.id)
   end
 
   it "displays pet info" do
+    visit "/pets"
 
+    expect(page).to have_content(@pet_1.image)
+    expect(page).to have_content(@pet_1.name)
+    expect(page).to have_content(@pet_1.approximate_age)
+    expect(page).to have_content(@pet_1.sex)
+    expect(page).to have_content(@pet_1.shelter_id[:name])
   end
 end

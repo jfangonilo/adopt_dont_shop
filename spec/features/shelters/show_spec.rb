@@ -32,4 +32,11 @@ describe "shelter show", type: :feature do
 
     assert_equal "/shelters", current_path
   end
+
+  it "can delete the shelter and redirect to index" do
+    visit "/shelters/#{@shelter_1.id}"
+    click_button "Delete"
+
+    assert_equal "/shelters", current_path
+  end
 end

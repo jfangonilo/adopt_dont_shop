@@ -29,4 +29,16 @@ RSpec.describe "update shelter page", type: :feature do
     click_button "submit"
     assert_equal "/shelters/#{shelter_1.id}", current_path
   end
+
+  it "has an update link from index" do
+    shelter_1 = Shelter.create(name: "Shelter 1",
+      address: "6303 W Exposition Ave",
+      city:    "Lakewood",
+      state:   "CO",
+      zip:     "80226")
+
+    visit '/shelters'
+    click_link "Edit"
+    assert_equal "/shelters/#{shelter_1.id}/edit", current_path
+  end
 end

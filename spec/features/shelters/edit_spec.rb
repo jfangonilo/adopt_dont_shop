@@ -10,7 +10,7 @@ describe "update shelter page", type: :feature do
   end
 
   it "can update shelter redirect" do
-    visit "/shelters/#{shelter_1.id}/edit"
+    visit "/shelters/#{@shelter_1.id}/edit"
     fill_in 'shelter[name]', with: 'test shelter'
     fill_in 'shelter[address]', with: 'test shelter address'
     fill_in 'shelter[city]', with: 'test shelter city'
@@ -18,6 +18,6 @@ describe "update shelter page", type: :feature do
     fill_in 'shelter[zip]', with: 'test shelter zip'
     click_button "submit"
 
-    assert_equal "/shelters/#{shelter_1.id}", current_path
+    assert_equal "/shelters/#{@shelter_1.id}", current_path
   end
 end

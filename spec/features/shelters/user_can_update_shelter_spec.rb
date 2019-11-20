@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "update shelter page", type: :feature do
   it "has link from shelter index page" do
-    shelter_1 = Shelter.create(name:    "Shelter 1",
-                   address: "6303 W Exposition Ave",
-                   city:    "Lakewood",
-                   state:   "CO",
-                   zip:     "80226")
+    shelter_1 = Shelter.create(name: "Shelter 1",
+      address: "6303 W Exposition Ave",
+      city:    "Lakewood",
+      state:   "CO",
+      zip:     "80226")
 
     visit "/shelters/#{shelter_1.id}"
     click_link "Update"
@@ -15,10 +15,10 @@ RSpec.describe "update shelter page", type: :feature do
 
   it "can update shelter from edit page and redirects" do
     shelter_1 = Shelter.create(name:    "Shelter 1",
-                   address: "6303 W Exposition Ave",
-                   city:    "Lakewood",
-                   state:   "CO",
-                   zip:     "80226")
+      address: "6303 W Exposition Ave",
+      city:    "Lakewood",
+      state:   "CO",
+      zip:     "80226")
 
     visit "/shelters/#{shelter_1.id}/edit"
     fill_in 'shelter[name]', with: 'test shelter'

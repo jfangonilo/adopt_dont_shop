@@ -9,7 +9,6 @@ RSpec.describe "add shelter page", type: :feature do
   end
 
   it "can add a shelter" do
-
     visit "shelters/new"
     fill_in 'shelter[name]',    with: 'test shelter'
     fill_in 'shelter[address]', with: 'test shelter address'
@@ -19,5 +18,18 @@ RSpec.describe "add shelter page", type: :feature do
     click_button 'submit'
 
     assert_equal '/shelters', current_path
+  end
+
+  it "has link from show shelter" do
+    shelter_1 = Shelter.create(name: "Shelter 1",
+      address: "6303 W Exposition Ave",
+      city:    "Lakewood",
+      state:   "CO",
+      zip:     "80226")
+
+    visit "/shelters/#{shelter_1.id}"
+    click_link "Shelter Index"
+
+    assert_equal "/shelters", current_path
   end
 end

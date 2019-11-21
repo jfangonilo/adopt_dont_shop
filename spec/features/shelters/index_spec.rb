@@ -25,8 +25,8 @@ describe "shelters index page", type: :feature do
 
   xit "can navigate to a specific shelter edit page" do
     # within 'shelter' do
-      click_link "Edit"
-      assert_equal "/shelter/#{@shelter_1.id}/edit", current_path
+      # click_link "Edit"
+      # assert_equal "/shelter/#{@shelter_1.id}/edit", current_path
     # end
   end
 end

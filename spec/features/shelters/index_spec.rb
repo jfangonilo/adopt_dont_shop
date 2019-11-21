@@ -21,8 +21,8 @@ describe "As a visitor, when I visit the shelters index page," do
   end
 
   it "I can see the name of each shelter in the system" do
-    expect(page).to have_content("Shelter 1")
-    expect(page).to have_content("Shelter 2")
+    expect(page).to have_content "Shelter 1"
+    expect(page).to have_content "Shelter 2"
   end
 
   it "I can navigate to the shelter creation page via a link" do

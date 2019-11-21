@@ -1,42 +1,40 @@
 require 'rails_helper'
 
-describe "shelter show", type: :feature do
+describe "As a visitor, when I visit /shelters/:id," do
   before :each do
-    @shelter_1 = Shelter.create(name: "Shelter 1",
+    @shelter_1 = Shelter.create!(
+      name: "Shelter 1",
       address: "6303 W Exposition Ave",
       city:    "Lakewood",
       state:   "CO",
       zip:     "80226")
+
+      visit "shelters/#{@shelter_1.id}"
   end
 
-  it "can see a single shelter" do
-    visit "shelters/#{@shelter_1.id}"
-
-    expect(page).to have_content(@shelter_1.name)
-    expect(page).to have_content(@shelter_1.address)
-    expect(page).to have_content(@shelter_1.city)
-    expect(page).to have_content(@shelter_1.state)
-    expect(page).to have_content(@shelter_1.zip)
+  it "I can see the shelter with that id including the shelter's name, address, city, state, zip" do
+    expect(page).to have_content "Shelter 1"
+    expect(page).to have_content "6303 W Exposition Ave"
+    expect(page).to have_content "Lakewood"
+    expect(page).to have_content "CO"
+    expect(page).to have_content "80226"
   end
 
-  it "can navigate to update page" do
-    visit "/shelters/#{@shelter_1.id}"
+  it "I can navigate to the edit shelter page via an Update link" do
     click_link "Update"
 
-    assert_equal "/shelters/#{@shelter_1.id}/edit", current_path
+    expect(current_path).to eq "/shelters/#{@shelter_1.id}/edit"
   end
 
-  it "can navigate back to index" do
-    visit "shelters/#{@shelter_1.id}"
+  it "I can navigate back to index via a Shelter Index link" do
     click_link "Shelter Index"
 
-    assert_equal "/shelters", current_path
+    expect(current_path).to eq "/shelters"
   end
 
-  it "can delete the shelter and redirect to index" do
-    visit "/shelters/#{@shelter_1.id}"
+  it "I can delete the shelter and redirect to index via a Delete button" do
     click_button "Delete"
 
-    assert_equal "/shelters", current_path
+    expect(current_path).to eq "/shelters"
   end
 end

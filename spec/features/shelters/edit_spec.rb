@@ -14,13 +14,14 @@ describe "As a visitor, when I visit /shelters/:id/edit," do
   end
 
   it "I can fill out a form to update that shelter and can see the updated information" do
-    fill_in 'shelter[name]',    with: 'test shelter'
-    fill_in 'shelter[address]', with: 'test shelter address'
-    fill_in 'shelter[city]',    with: 'test shelter city'
-    fill_in 'shelter[state]',   with: 'test shelter state'
-    fill_in 'shelter[zip]',     with: 'test shelter zip'
-    click_button "submit"
+    fill_in 'name',    with: 'test shelter'
+    fill_in 'address', with: 'test shelter address'
+    fill_in 'city',    with: 'test shelter city'
+    fill_in 'state',   with: 'test shelter state'
+    fill_in 'zip',     with: 'test shelter zip'
 
+    click_button "Update"
+    
     expect(current_path).to eq "/shelters/#{@shelter_1.id}"
 
     expect(page).to have_content "test shelter"

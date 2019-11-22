@@ -29,11 +29,11 @@ describe "As a user, when I visit the pet index page," do
       approximate_age:  4,
       sex:              "female",
     )
+
+    visit "/pets"
   end
 
   it "I can see all pets and their image, name, age, sex, name of shelter" do
-    visit "/pets"
-
     within "#pet-#{@pet_1.id}" do
       expect(page).to have_css "img[src *= 'Husky-Names-Feature.jpg']"
       expect(page).to have_content "Seamus"

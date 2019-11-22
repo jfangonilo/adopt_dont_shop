@@ -9,4 +9,8 @@ class Pet < ApplicationRecord
   def shelter_name
     shelter.name
   end
+
+  def adoptable?
+    true
+  end
 end

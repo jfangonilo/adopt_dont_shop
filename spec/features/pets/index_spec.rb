@@ -18,13 +18,13 @@ describe "As a user, when I visit the pet index page,", type: :feature do
     )
 
     @pet_1 = @shelter_1.pets.create!(
-      image:            "string 1",
+      image:            "https://www.allthingsdogs.com/wp-content/uploads/2018/12/Husky-Names-Feature.jpg",
       name:             "Seamus",
       approximate_age:  8,
       sex:              "male",
     )
     @pet_2 = @shelter_2.pets.create!(
-      image:            "string 2",
+      image:            "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12234710/Chihuahua-On-White-03.jpg",
       name:             "Pepper",
       approximate_age:  4,
       sex:              "female",
@@ -34,13 +34,13 @@ describe "As a user, when I visit the pet index page,", type: :feature do
   it "I can see all pets and their image, name, age, sex, name of shelter" do
     visit "/pets"
 
-    expect(page).to have_content "string 1"
+    expect(page).to have_css "img[src *= 'Husky-Names-Feature.jpg']"
     expect(page).to have_content "Seamus"
     expect(page).to have_content 8
     expect(page).to have_content "male"
     expect(page).to have_content "Shelter 1"
 
-    expect(page).to have_content "string 2"
+    expect(page).to have_css "img[src *= 'Chihuahua-On-White-03.jpg']"
     expect(page).to have_content "Pepper"
     expect(page).to have_content 4
     expect(page).to have_content "female"

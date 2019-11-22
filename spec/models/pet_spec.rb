@@ -2,14 +2,15 @@ require 'rails_helper'
 
 describe Pet, type: :model do
   before :each do
-    @shelter_1 = Shelter.create(
+    @shelter_1 = Shelter.create!(
       name:     "House of Seamus",
       address:  "6303 W Exposition Ave",
       city:     "Lakewood",
       state:    "CO",
       zip:      "80226"
     )
-    @pet_1 = Pet.create(
+
+    @pet_1 = @shelter_1.pets.create!(
       image:            "string",
       name:             "Seamus",
       approximate_age:  8,
@@ -31,7 +32,11 @@ describe Pet, type: :model do
 
   describe "method" do
     it ".shelter_name" do
-      expect(@pet_1.shelter_name).to eq("House of Seamus")
+      expect(@pet_1.shelter_name).to eq "House of Seamus"
+    end
+
+    it ".adoptable?" do
+      expect(@pet_1.adoptable?).to eq true
     end
   end
 end

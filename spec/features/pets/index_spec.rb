@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "As a user, when I visit the pet index page,", type: :feature do
+describe "As a user, when I visit the pet index page," do
   before :each do
     @shelter_1 = Shelter.create!(
       name:     "Shelter 1",
@@ -34,16 +34,20 @@ describe "As a user, when I visit the pet index page,", type: :feature do
   it "I can see all pets and their image, name, age, sex, name of shelter" do
     visit "/pets"
 
-    expect(page).to have_css "img[src *= 'Husky-Names-Feature.jpg']"
-    expect(page).to have_content "Seamus"
-    expect(page).to have_content 8
-    expect(page).to have_content "male"
-    expect(page).to have_content "Shelter 1"
+    within "#pet-#{@pet_1.id}" do
+      expect(page).to have_css "img[src *= 'Husky-Names-Feature.jpg']"
+      expect(page).to have_content "Seamus"
+      expect(page).to have_content 8
+      expect(page).to have_content "male"
+      expect(page).to have_content "Shelter 1"
+    end
 
-    expect(page).to have_css "img[src *= 'Chihuahua-On-White-03.jpg']"
-    expect(page).to have_content "Pepper"
-    expect(page).to have_content 4
-    expect(page).to have_content "female"
-    expect(page).to have_content "Shelter 2"
+    within "#pet-#{@pet_2.id}" do
+      expect(page).to have_css "img[src *= 'Chihuahua-On-White-03.jpg']"
+      expect(page).to have_content "Pepper"
+      expect(page).to have_content 4
+      expect(page).to have_content "female"
+      expect(page).to have_content "Shelter 2"
+    end
   end
 end

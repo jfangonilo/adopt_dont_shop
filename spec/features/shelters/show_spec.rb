@@ -3,11 +3,12 @@ require 'rails_helper'
 describe "As a visitor, when I visit /shelters/:id," do
   before :each do
     @shelter_1 = Shelter.create!(
-      name: "Shelter 1",
-      address: "6303 W Exposition Ave",
-      city:    "Lakewood",
-      state:   "CO",
-      zip:     "80226")
+      name:     "Shelter 1",
+      address:  "6303 W Exposition Ave",
+      city:     "Lakewood",
+      state:    "CO",
+      zip:      "80226"
+    )
 
       visit "shelters/#{@shelter_1.id}"
   end

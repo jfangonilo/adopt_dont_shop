@@ -27,20 +27,18 @@ describe "As a visitor, when I visit the shelters index page," do
 
   it "I can navigate to the shelter creation page via a link" do
     click_link "New Shelter"
-
     expect(current_path).to eq "/shelters/new"
   end
 
   it "I can navigate to individual shelters via a link" do
     click_link "Shelter 1"
-
     expect(current_path).to eq "/shelters/#{@shelter_1.id}"
   end
 
-  xit "I can navigate to a specific shelter edit page" do
-    # within 'shelter' do
-      # click_link "Edit"
-      # assert_equal "/shelter/#{@shelter_1.id}/edit", current_path
-    # end
+  it "I can navigate to a specific shelter edit page" do
+    within "#shelter-#{@shelter_1.id}" do
+      click_link "Edit"
+      assert_equal "/shelters/#{@shelter_1.id}/edit", current_path
+    end
   end
 end

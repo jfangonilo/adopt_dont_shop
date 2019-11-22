@@ -15,7 +15,7 @@ describe Pet, type: :model do
       name:             "Seamus",
       approximate_age:  8,
       sex:              "M",
-      shelter_id:       @shelter_1.id
+      description:      "Winter is Coming, dog"
     )
   end
 
@@ -24,6 +24,7 @@ describe Pet, type: :model do
     it {should validate_presence_of :name}
     it {should validate_presence_of :approximate_age}
     it {should validate_presence_of :sex}
+    it {should validate_presence_of :description}
   end
 
   describe "relationships" do

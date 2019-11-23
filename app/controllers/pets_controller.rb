@@ -20,6 +20,13 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
   end
 
+  def create
+    shelter = Shelter.find(params[:shelter_id])
+    pet = shelter.pets.create(pet_params)
+    pet.save
+    redirect_to "/shelters/#{pet.shelter_id}/pets"
+  end
+
   def update
     pet = Pet.find(params[:id])
     pet.update(pet_params)

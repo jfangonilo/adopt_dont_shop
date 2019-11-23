@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "As a user, when I visit the pet index page," do
+describe "As a user, when I visit the /shelters/:shelter_id/pets page," do
   before :each do
     @shelter_1 = Shelter.create!(
       name:     "Winterfell",
@@ -8,13 +8,6 @@ describe "As a user, when I visit the pet index page," do
       city:     "Lakewood",
       state:    "CO",
       zip:      "80226"
-    )
-    @shelter_2 = Shelter.create!(
-      name:     "Sunspear",
-      address:  "12322 Bohannon Blvd",
-      city:     "Orlando",
-      state:    "FL",
-      zip:      "32824"
     )
 
     @pet_1 = @shelter_1.pets.create!(
@@ -24,32 +17,30 @@ describe "As a user, when I visit the pet index page," do
       sex:              "male",
       description:      "Winter is Coming; dog"
     )
-    @pet_2 = @shelter_2.pets.create!(
-      image:            "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12234710/Chihuahua-On-White-03.jpg",
-      name:             "Pepper",
-      approximate_age:  4,
+    @pet_2 = @shelter_1.pets.create!(
+      image:            "https://www.catster.com/wp-content/uploads/2018/03/Calico-cat.jpg",
+      name:             "Miso",
+      approximate_age:  2,
       sex:              "female",
-      description:      "Unbowed, Unbent, Unbroken; dog"
+      description:      "Winter is Coming; cat"
     )
 
-    visit "/pets"
+    visit "/shelters/#{@shelter_1.id}/pets"
   end
 
-  it "I can see all pets and their image, name, age, sex, name of shelter" do
+  xit "I can see each pet that can be adopted from that shelter" do
     within "#pet-#{@pet_1.id}" do
       expect(page).to have_css "img[src *= 'Husky-Names-Feature.jpg']"
       expect(page).to have_content "Seamus"
       expect(page).to have_content 8
       expect(page).to have_content "male"
-      expect(page).to have_content "Winterfell"
     end
 
     within "#pet-#{@pet_2.id}" do
-      expect(page).to have_css "img[src *= 'Chihuahua-On-White-03.jpg']"
-      expect(page).to have_content "Pepper"
-      expect(page).to have_content 4
+      expect(page).to have_css "img[src *= 'Calico-cat.jpg']"
+      expect(page).to have_content "Miso"
+      expect(page).to have_content 2
       expect(page).to have_content "female"
-      expect(page).to have_content "Sunspear"
     end
   end
 end

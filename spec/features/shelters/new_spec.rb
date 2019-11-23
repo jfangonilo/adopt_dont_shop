@@ -9,7 +9,7 @@ describe "As a visitor, when I visit shelters/new," do
     fill_in 'state',   with: 'test shelter state'
     fill_in 'zip',     with: 'test shelter zip'
 
-    click_button 'submit'
+    click_button 'Submit'
 
     expect(current_path).to eq "/shelters"
     expect(page).to have_content "test shelter"

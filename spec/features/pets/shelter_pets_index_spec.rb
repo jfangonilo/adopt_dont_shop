@@ -47,6 +47,6 @@ describe "As a user, when I visit the /shelters/:shelter_id/pets page," do
   it "I can add an adoptable pet to that shelter via a link" do
     click_link "Add Pet"
 
-    expect(current_path).to eq "/shelters/#{@shelter.id}/pets/new"
+    expect(current_path).to eq "/shelters/#{@shelter_1.id}/pets/new"
   end
 end

@@ -24,7 +24,6 @@ describe "When I visit a pet creation page," do
     expect(current_path).to eq "/shelters/#{@shelter.id}/pets"
     expect(page).to have_css "img[src *= 'ghost.jpg']"
     expect(page).to have_content "Ghost"
-    expect(page).to have_content "Winter is Here; Direwolf"
     expect(page).to have_content 5
     expect(page).to have_content "male"
   end

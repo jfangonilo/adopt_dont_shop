@@ -59,4 +59,11 @@ describe "As a user, when I visit the pet index page," do
     end
     expect(current_path).to eq "/pets/#{@pet_1.id}/edit"
   end
+
+  it "I can delete a pet" do
+    within "#pet-#{@pet_1.id}" do
+      click_link "Delete"
+    end
+    expect(current_path).to_not have_content "Seamus"
+  end
 end

@@ -31,8 +31,8 @@ describe "As a visitor, when I visit /shelters/:id," do
     expect(current_path).to eq "/shelters"
   end
 
-  it "I can delete the shelter and redirect to index via a Delete button" do
-    click_button "Delete"
+  it "I can delete the shelter and redirect to index via a link" do
+    click_link "Delete"
     expect(current_path).to eq "/shelters"
     expect(page).to_not have_content "Shelter 1"
     expect(page).to_not have_content "6303 W Exposition Ave"

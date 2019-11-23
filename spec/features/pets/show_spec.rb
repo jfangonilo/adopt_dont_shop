@@ -29,9 +29,20 @@ describe "When I visit /pets/:id," do
     expect(page).to have_content @pet.description
   end
 
-  it "can navigate to /pets/:id/edit via link" do
+  it "I can navigate to /pets/:id/edit via link" do
     click_link "Update"
 
     expect(current_path).to eq "/pets/#{@pet.id}/edit"
+  end
+
+  it "I can delete a shelter via a link" do
+    click_link "Delete"
+
+    expect(current_path).to eq "/pets"
+    expect(page).to_not have_css "img[src *= 'Husky-Names-Feature.jpg']"
+    expect(page).to_not have_content @pet.name
+    expect(page).to_not have_content @pet.approximate_age
+    expect(page).to_not have_content @pet.sex
+    expect(page).to_not have_content @pet.description
   end
 end

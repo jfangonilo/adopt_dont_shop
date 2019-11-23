@@ -52,4 +52,11 @@ describe "As a user, when I visit the pet index page," do
       expect(page).to have_content "Sunspear"
     end
   end
+
+  it "I can navigate to pet update page" do
+    within "#pet-#{@pet_1.id}" do
+      click_link "Update"
+    end
+    expect(current_path).to eq "/pets/#{@pet_1.id}/edit"
+  end
 end

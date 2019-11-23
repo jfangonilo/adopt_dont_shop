@@ -1,8 +1,8 @@
-<%= link_to "Shelter Index", "/shelters" %>
+<p><%= link_to "Shelter Index", "/shelters" %></p>
 <h2><%= @shelter.name %></h2>
 <p><%= @shelter.address %></p>
 <p><%= @shelter.city %></p>
 <p><%= @shelter.state %></p>
 <p><%= @shelter.zip %></p>
-<%= link_to "Update", "/shelters/#{@shelter.id}/edit" %>
-<%= link_to "Delete", "/shelters/#{@shelter.id}", method: "delete" %>
+<p><%= link_to "Update", "/shelters/#{@shelter.id}/edit" %></p>
+<p><%= link_to "Delete", "/shelters/#{@shelter.id}", method: "delete" %></p>

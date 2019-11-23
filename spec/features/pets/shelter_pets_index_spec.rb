@@ -28,7 +28,7 @@ describe "As a user, when I visit the /shelters/:shelter_id/pets page," do
     visit "/shelters/#{@shelter_1.id}/pets"
   end
 
-  xit "I can see each pet that can be adopted from that shelter" do
+  it "I can see each pet that can be adopted from that shelter" do
     within "#pet-#{@pet_1.id}" do
       expect(page).to have_css "img[src *= 'Husky-Names-Feature.jpg']"
       expect(page).to have_content "Seamus"

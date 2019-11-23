@@ -66,4 +66,11 @@ describe "As a user, when I visit the pet index page," do
     end
     expect(current_path).to_not have_content "Seamus"
   end
+
+  it "I can navigate to a shelter on the page" do
+    within "#pet-#{@pet_1.id}" do
+      click_link "#{@pet_1.shelter_name}"
+    end
+    expect(current_path).to eq "/shelters/#{@pet_1.shelter_id}"
+  end
 end

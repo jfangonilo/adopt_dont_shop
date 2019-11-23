@@ -10,7 +10,7 @@
     <p><%= pet.name %></p>
     <p><%= pet.approximate_age %></p>
     <p><%= pet.sex %></p>
-    <p><%= pet.shelter_name %></p>
+    <p><%= link_to pet.shelter_name, "/shelters/#{pet.shelter_id}" %></p>
     <p><%= link_to "Update", "/pets/#{pet.id}/edit" %></p>
     <p><%= link_to "Delete", "/pets/#{pet.id}", method: "delete" %></p>
   </section>

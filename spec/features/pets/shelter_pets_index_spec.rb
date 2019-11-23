@@ -49,4 +49,11 @@ describe "As a user, when I visit the /shelters/:shelter_id/pets page," do
 
     expect(current_path).to eq "/shelters/#{@shelter_1.id}/pets/new"
   end
+
+  it "can navigate to a pet on the page" do
+    within "#pet-#{@pet_1.id}" do
+      click_link "#{@pet_1.name}"
+    end
+    expect(current_path).to eq "/pets/#{@pet_1.id}"
+  end
 end

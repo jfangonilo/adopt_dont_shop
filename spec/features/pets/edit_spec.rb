@@ -30,14 +30,14 @@ describe "As a visitor, when I go to /pet/:id/edit," do
 
     click_button "Update"
 
-    expect(current_path).to eq "/pet/#{@pet.id}"
-    expect(page).to have_css "img[url *= ghost.jpg]"
+    expect(current_path).to eq "/pets/#{@pet.id}"
+    expect(page).to have_css "img[url *= 'ghost.jpg']"
     expect(page).to have_content "Ghost"
     expect(page).to have_content "Winter is Here; Direwolf"
     expect(page).to have_content 5
     expect(page).to have_content "male"
 
-    expect(page).to_not have_css "img[url *= Husky-Names-Feature.jpg]"
+    expect(page).to_not have_css "img[url *= 'Husky-Names-Feature.jpg']"
     expect(page).to_not have_content "Seamuis"
     expect(page).to_not have_content "Winter is Coming; dog"
     expect(page).to_not have_content 5

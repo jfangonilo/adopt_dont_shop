@@ -13,6 +13,7 @@ class Pet < ApplicationRecord
   end
 
   def adoptable?
-    adoptable
+    return "Adoptable" if self.adoptable
+    "Adoption pending"
   end
 end

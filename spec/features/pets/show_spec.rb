@@ -28,4 +28,10 @@ describe "When I visit /pets/:id," do
     expect(page).to have_content @pet.sex
     expect(page).to have_content @pet.description
   end
+
+  it "can navigate to /pets/:id/edit via link" do
+    click_link "Update"
+
+    expect(current_path).to eq "/pets/#{@pet.id}/edit"
+  end
 end

@@ -11,5 +11,6 @@
     <p><%= pet.approximate_age %></p>
     <p><%= pet.sex %></p>
     <p><%= pet.shelter_name %></p>
+    <p><%= link_to "Update", "/pets/#{pet.id}/edit" %></p>
   </section>
 <% end %>

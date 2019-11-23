@@ -26,7 +26,6 @@ describe Pet, type: :model do
     it {should validate_presence_of :sex}
     it {should validate_presence_of :description}
     it {should validate_presence_of :adoptable}
-
   end
 
   describe "relationships" do
@@ -38,8 +37,8 @@ describe Pet, type: :model do
       expect(@pet_1.shelter_name).to eq "House of Seamus"
     end
 
-    it ".adoptable?" do
-      expect(@pet_1.adoptable?).to eq true
+    it ".adoptable? initially returns adoptable" do
+      expect(@pet_1.adoptable?).to eq "Adoptable"
     end
   end
 end

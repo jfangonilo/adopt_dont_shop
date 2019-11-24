@@ -43,4 +43,9 @@ describe "As a visitor, when I visit /shelters/:id," do
     expect(page).to_not have_content "CO"
     expect(page).to_not have_content "80226"
   end
+
+  it "I can navigate to the pet index for that shelter" do
+    click_link "Pets at #{@shelter_1.name}"
+    expect(current_path).to eq "/shelters/#{@shelter_1.id}/pets"
+  end
 end

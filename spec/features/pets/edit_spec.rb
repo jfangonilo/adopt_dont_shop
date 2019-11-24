@@ -26,7 +26,7 @@ describe "As a visitor, when I go to /pet/:id/edit," do
     fill_in 'name',             with: 'Ghost'
     fill_in 'description',      with: 'Winter is Here; Direwolf'
     fill_in 'approximate_age',  with: 5
-    fill_in 'sex',              with: 'male'
+    choose  'sex',              with: "Male"
 
     click_button "Update"
 
@@ -35,7 +35,7 @@ describe "As a visitor, when I go to /pet/:id/edit," do
     expect(page).to have_content "Ghost"
     expect(page).to have_content "Winter is Here; Direwolf"
     expect(page).to have_content 5
-    expect(page).to have_content "male"
+    expect(page).to have_content "Male"
 
     expect(page).to_not have_css "img[url *= 'Husky-Names-Feature.jpg']"
     expect(page).to_not have_content "Seamus"

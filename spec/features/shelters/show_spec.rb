@@ -10,6 +10,14 @@ describe "As a visitor, when I visit /shelters/:id," do
       zip:      "80226"
     )
 
+    @pet = @shelter_1.pets.create(
+      image:            "https://www.allthingsdogs.com/wp-content/uploads/2018/12/Husky-Names-Feature.jpg",
+      name:             "Seamus",
+      approximate_age:  8,
+      sex:              "male",
+      description:      "Winter is Coming; dog"
+    )
+
       visit "shelters/#{@shelter_1.id}"
   end
 
@@ -24,11 +32,6 @@ describe "As a visitor, when I visit /shelters/:id," do
   it "I can navigate to the edit shelter page via an Update link" do
     click_link "Update"
     expect(current_path).to eq "/shelters/#{@shelter_1.id}/edit"
-  end
-
-  it "I can navigate back to index via a Shelter Index link" do
-    click_link "Shelter Index"
-    expect(current_path).to eq "/shelters"
   end
 
   it "I can delete the shelter and redirect to index via a link" do

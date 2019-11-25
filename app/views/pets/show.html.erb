@@ -1,7 +1,7 @@
 <section class = "wrapper">
   <h1><%= @pet.name %></h1>
   <%= image_tag @pet.image %>
-  <p><%= @pet.description %>
+  <p><%= @pet.description %><p>
   <p><%= @pet.approximate_age %> y/o <%= @pet.sex %></p>
   <p><%= @pet.adoptable? %></p>
   <p><%= link_to "Update", "/pets/#{@pet.id}/edit" %>

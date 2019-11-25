@@ -8,6 +8,6 @@ class Shelter < ApplicationRecord
   has_many :pets
 
   def pet_count
-    pets.count
+    pets.length
   end
 end

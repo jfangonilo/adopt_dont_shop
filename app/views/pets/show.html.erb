@@ -8,6 +8,7 @@
   <% else %>
     <p>Adoption Pending</p>
   <% end %>
+  <p><%= link_to "Change to Adoption Pending", "/pets/#{@pet.id}/pending" %></p>
   <p><%= link_to "Update", "/pets/#{@pet.id}/edit" %>
   <%= link_to "Delete", "/pets/#{@pet.id}", method: "delete" %></p>
 </section>

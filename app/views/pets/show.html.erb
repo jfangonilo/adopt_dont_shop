@@ -5,10 +5,11 @@
   <p><%= @pet.approximate_age %> y/o <%= @pet.sex %></p>
   <% if @pet.adoptable? %>
     <p>Adoptable</p>
+    <p><%= link_to "Change to Adoption Pending", "/pets/#{@pet.id}/pending", method: "patch" %></p>
   <% else %>
     <p>Adoption Pending</p>
+    <p><%= link_to "Change to Adoptable", "/pets/#{@pet.id}/pending", method: "patch" %></p>
   <% end %>
-  <p><%= link_to "Change to Adoption Pending", "/pets/#{@pet.id}/pending" %></p>
   <p><%= link_to "Update", "/pets/#{@pet.id}/edit" %>
   <%= link_to "Delete", "/pets/#{@pet.id}", method: "delete" %></p>
 </section>

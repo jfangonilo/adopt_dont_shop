@@ -1,8 +1,9 @@
-<h2><%= image_tag @pet.image %></h2>
-<p><%= @pet.name %></p>
-<p><%= @pet.description %></p>
-<p><%= @pet.approximate_age %></p>
-<p><%= @pet.sex %></p>
-<p><%= @pet.adoptable? %></p>
-<p><%= link_to "Update", "/pets/#{@pet.id}/edit" %></p>
-<p><%= link_to "Delete", "/pets/#{@pet.id}", method: "delete" %></p>
+<section class = "wrapper">
+  <h1><%= @pet.name %></h1>
+  <%= image_tag @pet.image %>
+  <p><%= @pet.description %>
+  <p><%= @pet.approximate_age %> y/o <%= @pet.sex %></p>
+  <p><%= @pet.adoptable? %></p>
+  <p><%= link_to "Update", "/pets/#{@pet.id}/edit" %>
+  <%= link_to "Delete", "/pets/#{@pet.id}", method: "delete" %></p>
+</section>

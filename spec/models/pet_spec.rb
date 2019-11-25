@@ -38,7 +38,7 @@ describe Pet, type: :model do
     end
 
     it ".adoptable? initially returns adoptable" do
-      expect(@pet_1.adoptable?).to eq "Adoptable"
+      expect(@pet_1.adoptable?).to eq true
     end
   end
 end

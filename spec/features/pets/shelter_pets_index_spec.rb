@@ -56,4 +56,10 @@ describe "As a user, when I visit the /shelters/:shelter_id/pets page," do
     end
     expect(current_path).to eq "/pets/#{@pet_1.id}"
   end
+
+  it "I can see a count of pets at the shelter" do
+    within "#pet-count" do
+      expect(page).to have_content 2
+    end
+  end
 end

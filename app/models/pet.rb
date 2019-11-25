@@ -15,4 +15,8 @@ class Pet < ApplicationRecord
   def adoptable?
     self.adoptable
   end
+
+  def toggle_adoptable
+    self.toggle! :adoptable
+  end
 end

@@ -27,6 +27,7 @@ describe "When I visit /pets/:id," do
     expect(page).to have_content @pet.approximate_age
     expect(page).to have_content @pet.sex
     expect(page).to have_content @pet.description
+    expect(page).to have_content "Adoptable"
   end
 
   it "I can navigate to /pets/:id/edit via link" do

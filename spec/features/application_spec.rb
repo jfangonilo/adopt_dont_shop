@@ -6,16 +6,12 @@ describe "All pages" do
   end
 
   it "should have link to pet index" do
-    within "#pets-link" do
-      click_link "All Pets"
-    end
-  expect(current_path).to eq "/pets"
+    click_link "All Pets"
+    expect(current_path).to eq "/pets"
   end
 
   it "should have link to shelter index" do
-    within "#shelters-link" do
-      click_link "All Shelters"
-    end
-  expect(current_path).to eq "/shelters"
+    click_link "All Shelters"
+    expect(current_path).to eq "/shelters"
   end
 end

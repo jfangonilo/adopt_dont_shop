@@ -34,7 +34,7 @@ class SheltersController < ApplicationController
 
   def sort
     @shelters = Shelter.all.order(name: :ASC)
-    redirect_to '/shelters'
+    render 'index'
   end
 
 private

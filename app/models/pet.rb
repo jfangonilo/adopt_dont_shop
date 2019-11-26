@@ -21,4 +21,8 @@ class Pet < ApplicationRecord
   def toggle_adoptable
     self.toggle! :adoptable
   end
+
+  def self.sort_adoptable
+    all.order(adoptable: :DESC)
+  end
 end

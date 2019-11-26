@@ -79,5 +79,13 @@ describe "As a user, when I visit the pet index page," do
       click_link "#{@pet_1.name}"
     end
     expect(current_path).to eq "/pets/#{@pet_1.id}"
+  end`
+
+  it "I can see the pets by adoptable status" do
+    expect(page.body.index("Seamus")).to be < page.body.index("Pepper")
+    visit "/pets/#{@pet_1.id}"
+    click_link "Change to Adoption Pending"
+    visit "/pets"
+    expect(page.body.index("Pepper")).to be < page.body.index("Seamus")
   end
 end

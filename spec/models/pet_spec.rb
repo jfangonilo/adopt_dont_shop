@@ -26,6 +26,8 @@ describe Pet, type: :model do
     it {should validate_presence_of :sex}
     it {should validate_presence_of :description}
     it {should validate_presence_of :adoptable}
+
+    it {should validate_numericality_of :approximate_age}
   end
 
   describe "relationships" do

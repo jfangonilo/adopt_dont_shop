@@ -33,7 +33,7 @@ class SheltersController < ApplicationController
   end
 
   def sort
-    @shelters = Shelter.all.order(name: :ASC)
+    @shelters = Shelter.alpha_sort
     render 'index'
   end
 

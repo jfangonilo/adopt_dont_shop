@@ -32,6 +32,11 @@ class SheltersController < ApplicationController
     redirect_to '/shelters'
   end
 
+  def sort
+    @shelters = Shelter.all.order(name: :ASC)
+    render 'index'
+  end
+
 private
   def shelter_params
     params.permit(:name, :address, :city, :state, :zip)

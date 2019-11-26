@@ -45,7 +45,7 @@ describe "As a visitor, when I visit /shelters/:id," do
   end
 
   it "I can navigate to the pet index for that shelter" do
-    click_link "Pets at #{@shelter_1.name}"
+    click_link "#{@shelter_1.name}"
     expect(current_path).to eq "/shelters/#{@shelter_1.id}/pets"
   end
 end

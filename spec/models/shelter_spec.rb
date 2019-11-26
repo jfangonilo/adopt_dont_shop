@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Shelter, type: :model do
   before :each do
     @shelter_1 = Shelter.create!(
-      name:     "House of Seamus",
+      name:     "Winterfell",
       address:  "6303 W Exposition Ave",
       city:     "Lakewood",
       state:    "CO",
@@ -24,6 +24,14 @@ describe Shelter, type: :model do
       sex:              "female",
       description:      "Winter is Coming; cat"
     )
+
+    @shelter_2 = Shelter.create(
+      name:     "Sunspear",
+      address:  "12322 Bohannon Blvd",
+      city:     "Orlando",
+      state:    "FL",
+      zip:      "32824"
+    )
   end
 
   describe "validations" do
@@ -41,6 +49,13 @@ describe Shelter, type: :model do
   describe "method" do
     it ".pet_count" do
       expect(@shelter_1.pet_count).to eq 2
+    end
+  end
+
+  describe "class method" do
+    it ".alpha_sort" do
+      expect(Shelter.all).to match_array [@shelter_1, @shelter_2]
+      expect(Shelter.alpha_sort).to match_array [@shelter_2, @shelter_1]
     end
   end
 end

@@ -6,6 +6,8 @@ class Pet < ApplicationRecord
   validates_presence_of :description
   validates_presence_of :adoptable
 
+  validates_numericality_of :approximate_age
+
   belongs_to :shelter
 
   def shelter_name

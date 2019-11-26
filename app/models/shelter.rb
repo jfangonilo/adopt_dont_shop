@@ -10,4 +10,8 @@ class Shelter < ApplicationRecord
   def pet_count
     pets.length
   end
+
+  def self.alpha_sort
+    all.order(name: :ASC)
+  end
 end

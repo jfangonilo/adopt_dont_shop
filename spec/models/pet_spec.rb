@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Pet, type: :model do
   before :each do
-    @shelter_1 = Shelter.create!(
+    shelter_1 = Shelter.create!(
       name:     "House of Seamus",
       address:  "6303 W Exposition Ave",
       city:     "Lakewood",
@@ -10,12 +10,20 @@ describe Pet, type: :model do
       zip:      "80226"
     )
 
-    @pet_1 = @shelter_1.pets.create!(
+    @pet_1 = shelter_1.pets.create!(
       image:            "string",
       name:             "Seamus",
       approximate_age:  8,
       sex:              "M",
       description:      "Winter is Coming, dog"
+    )
+
+    @pet_2 = shelter_1.pets.create(
+      image:            "https://www.catster.com/wp-content/uploads/2018/03/Calico-cat.jpg",
+      name:             "Miso",
+      approximate_age:  2,
+      sex:              "female",
+      description:      "Winter is Coming; cat"
     )
   end
 
@@ -41,6 +49,12 @@ describe Pet, type: :model do
 
     it ".adoptable? initially returns adoptable" do
       expect(@pet_1.adoptable?).to eq true
+    end
+
+    it ".sort_adoptable" do
+      expect(Pet.all).to match_array [@pet_1, @pet_2]
+      @pet_1.adoptable = false
+      expect(Pet.sort_adoptable).to match_array [@pet_2, @pet_1]
     end
   end
 end
